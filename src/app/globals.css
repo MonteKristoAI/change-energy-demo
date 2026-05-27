@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Poppins', system-ui, sans-serif;
+
+  /* Theme 1: Light (default) */
+  --color-bg: #ffffff;
+  --color-surface: #f7f9fb;
+  --color-text: #0b1c2e;
+  --color-muted: #5a6b7d;
+  --color-border: #e4e9ef;
+  --color-primary: #0f4d3a;
+  --color-primary-2: #15805e;
+  --color-accent: #c9a227;
+  --color-overlay: rgba(11, 28, 46, 0.55);
+}
+
+[data-theme="dark"] {
+  --color-bg: #0b1c2e;
+  --color-surface: #122739;
+  --color-text: #f5f7fa;
+  --color-muted: #9fb0c2;
+  --color-border: #1f3447;
+  --color-primary: #34d399;
+  --color-primary-2: #10b981;
+  --color-accent: #f5d76e;
+  --color-overlay: rgba(2, 10, 20, 0.65);
+}
+
+[data-theme="forest"] {
+  --color-bg: #0a1a14;
+  --color-surface: #112a20;
+  --color-text: #f3efe2;
+  --color-muted: #b9c6bd;
+  --color-border: #1f3b30;
+  --color-primary: #d4a24c;
+  --color-primary-2: #b88636;
+  --color-accent: #6ee7b7;
+  --color-overlay: rgba(5, 14, 10, 0.7);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 350ms ease, color 350ms ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+  ::selection { background: var(--color-primary); color: #fff; }
+}
+
+@layer utilities {
+  .bg-bg { background-color: var(--color-bg); }
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-primary-2 { background-color: var(--color-primary-2); }
+  .bg-accent { background-color: var(--color-accent); }
+  .text-text { color: var(--color-text); }
+  .text-muted { color: var(--color-muted); }
+  .text-primary { color: var(--color-primary); }
+  .text-accent { color: var(--color-accent); }
+  .border-border { border-color: var(--color-border); }
+  .ring-primary { --tw-ring-color: var(--color-primary); }
+
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes slowZoom { 0% { transform: scale(1.08); } 100% { transform: scale(1); } }
+  .anim-float { animation: float 4s ease-in-out infinite; }
+  .anim-zoom { animation: slowZoom 12s ease-out forwards; }
+}

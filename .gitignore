@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+dist
+.env*
+!.env.example
+.DS_Store
+*.log
+.vercel
+website
+website-old
+audit
+plan
+research
+state
