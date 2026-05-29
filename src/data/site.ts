@@ -11,8 +11,7 @@ export const site = {
     city: "Etobicoke, ON M8W 3Z8",
   },
   reviewUrl: "https://g.page/r/CRgguphQBNFxEAE/review",
-  logoUrl:
-    "https://images.squarespace-cdn.com/content/v1/5f9c4915ab87671bf52c7624/8d90acb6-7b40-4b49-84ab-4524ca4986bf/CE+logo+with+maple+leaf.png?format=1500w",
+  logoUrl: "/logo.png",
   mapEmbed:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.7878!2d-79.5174!3d43.6224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM3JzIxLjAiTiA3OcKwMzEnMDIuNCJX!5e0!3m2!1sen!2sca!4v1700000000000",
 };
