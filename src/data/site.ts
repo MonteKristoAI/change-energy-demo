@@ -20,62 +20,62 @@ export const services = [
   {
     slug: "strategic-engineering",
     title: "Strategic Engineering Design",
-    short: "Design and assessment for low-carbon business initiatives.",
+    short: "Feasibility, technology selection, and capital-grade design packages for low-carbon initiatives.",
     long:
       "We translate net-zero ambition into engineered systems. Our team produces feasibility studies, technology selection, and capital-grade design packages that survive scrutiny from operators, regulators, and lenders.",
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=70",
-    icon: "Compass",
+    tag: "Design",
   },
   {
     slug: "hydrogen-infrastructure",
     title: "Hydrogen Infrastructure",
-    short: "From feasibility to commissioned hydrogen refuelling sites.",
+    short: "Production, compression, storage, and dispensing across mobility and industrial applications.",
     long:
       "Production, compression, storage, dispensing. We design and de-risk hydrogen infrastructure across mobility, industrial, and utility applications, with a 25+ year base of fuelling station deployments behind every decision.",
     image:
       "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
-    icon: "Atom",
+    tag: "Hydrogen",
   },
   {
     slug: "natural-gas-refuelling",
     title: "Natural Gas Refuelling",
-    short: "CNG and LNG station design, analysis, and optimization.",
+    short: "CNG and LNG station design that meets uptime targets and TCO models for fleet operators.",
     long:
       "Fleet operators rely on us to scope, specify, and commission CNG and LNG infrastructure that meets uptime targets and TCO models. We design for the load profile you actually operate, not the brochure version.",
     image:
       "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
-    icon: "Flame",
+    tag: "Natural Gas",
   },
   {
     slug: "project-management",
     title: "Project Management",
-    short: "End-to-end delivery from concept through commissioning.",
+    short: "End-to-end delivery from concept through commissioning, run by engineers, not generalists.",
     long:
       "We hold the program together. Scope, schedule, budget, and stakeholders, governed by engineers who have actually delivered alternative fuel infrastructure at scale, not project managers learning on your project.",
     image:
       "https://images.unsplash.com/photo-1581091012184-7e0cdfbb6797?auto=format&fit=crop&w=1400&q=70",
-    icon: "ClipboardList",
+    tag: "Delivery",
   },
   {
     slug: "regulatory-compliance",
     title: "Regulatory Interpretation",
-    short: "Codes, standards, and compliance support across jurisdictions.",
+    short: "CSA, NFPA, TSSA, ASME. Engineered rationale that gets sign-off without re-litigating the standards.",
     long:
       "CSA, NFPA, TSSA, ASME. We read the standards so your project does not stall at AHJ review. Where the codes are ambiguous, we provide the engineered rationale that gets sign-off.",
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=70",
-    icon: "ShieldCheck",
+    tag: "Compliance",
   },
   {
     slug: "training-troubleshooting",
     title: "Training & Troubleshooting",
-    short: "Personnel training and on-site performance assessment.",
+    short: "Personnel training, SOP development, and on-site performance assessment when systems misbehave.",
     long:
       "Built infrastructure is only useful if the operators can run it. We deliver hands-on training, develop SOPs, and turn up on-site when something is not performing the way the design said it would.",
     image:
       "https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=1400&q=70",
-    icon: "GraduationCap",
+    tag: "Operations",
   },
 ];
 

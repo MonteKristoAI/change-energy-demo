@@ -1,23 +1,10 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  PhoneCall,
-  Compass,
-  Atom,
-  Flame,
-  ClipboardList,
-  ShieldCheck,
-  GraduationCap,
-  CheckCircle2,
-  Calendar,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, PhoneCall, CheckCircle2, Calendar } from "lucide-react";
 import { site, services, team, posts, whyUs } from "@/data/site";
 import { PageHero } from "@/components/PageHero";
 import { BookingCard } from "@/components/BookingCard";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { ContactForm } from "@/components/ContactForm";
-
-const iconMap = { Compass, Atom, Flame, ClipboardList, ShieldCheck, GraduationCap };
 
 export default function HomePage() {
   const featured = services.slice(0, 4);
@@ -54,37 +41,70 @@ export default function HomePage() {
 
       {/* SERVICES */}
       <section className="max-w-6xl mx-auto px-4 py-24">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              Capabilities
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold max-w-xl leading-[1.05]">
-              Engineering that survives operations.
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                Capabilities
+              </p>
+            </div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">
+              Engineering that <span style={{ color: "var(--color-primary)" }}>survives operations.</span>
             </h2>
           </div>
-          <p className="max-w-md" style={{ color: "var(--color-muted)" }}>
-            Four practice areas, one continuous team from feasibility through commissioning.
+          <p className="max-w-md text-base leading-relaxed" style={{ color: "var(--color-muted)" }}>
+            Six practice areas, one continuous team from feasibility through commissioning. The same engineers carry your project end-to-end.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 grid-rows-2 gap-5 md:h-[560px]">
-          {/* Large left card */}
-          <ServiceCard service={featured[0]} className="md:col-span-2 md:row-span-1 md:h-auto h-72" emphasis />
-          {/* Vertical right */}
-          <ServiceCard service={featured[1]} className="md:row-span-2 h-80 md:h-auto" vertical />
-          {/* Two bottom cards */}
-          <ServiceCard service={featured[2]} className="md:col-span-1 h-72 md:h-auto" />
-          <ServiceCard service={featured[3]} className="md:col-span-1 h-72 md:h-auto" />
+        <div className="grid md:grid-cols-3 grid-rows-2 gap-5 md:h-[600px]">
+          <ServiceCard service={featured[0]} index={1} className="md:col-span-2 md:row-span-1 md:h-auto h-72" emphasis />
+          <ServiceCard service={featured[1]} index={2} className="md:row-span-2 h-80 md:h-auto" vertical />
+          <ServiceCard service={featured[2]} index={3} className="md:col-span-1 h-72 md:h-auto" />
+          <ServiceCard service={featured[3]} index={4} className="md:col-span-1 h-72 md:h-auto" />
         </div>
 
-        <div className="mt-12 flex justify-center">
+        {/* Stats strip */}
+        <div
+          className="mt-10 rounded-2xl border grid grid-cols-2 md:grid-cols-4 overflow-hidden"
+          style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+        >
+          {[
+            { v: "150+", l: "Deployments worldwide" },
+            { v: "25+", l: "Years average experience" },
+            { v: "100%", l: "P.Eng signed deliverables" },
+            { v: "6", l: "Practice areas" },
+          ].map((s, i) => (
+            <div
+              key={s.l}
+              className={`stat-cell p-6 md:p-7 text-center stat-${i}`}
+            >
+              <p className="font-heading text-3xl md:text-4xl font-bold" style={{ color: "var(--color-primary)" }}>{s.v}</p>
+              <p className="text-xs uppercase tracking-wider mt-1" style={{ color: "var(--color-muted)" }}>{s.l}</p>
+            </div>
+          ))}
+          <style>{`
+            .stat-cell { border-color: var(--color-border); }
+            /* mobile: 2 cols — cells 1,3 left border; cells 2,3 top border */
+            .stat-1, .stat-3 { border-left: 1px solid var(--color-border); }
+            .stat-2, .stat-3 { border-top: 1px solid var(--color-border); }
+            @media (min-width: 768px) {
+              /* desktop: 4 cols — cells 1,2,3 left border; no top borders */
+              .stat-0 { border-left: none; border-top: none; }
+              .stat-1, .stat-2, .stat-3 { border-left: 1px solid var(--color-border); border-top: none; }
+            }
+          `}</style>
+        </div>
+
+        <div className="mt-10 flex justify-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border"
+            className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border transition-all hover:gap-3"
             style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }}
           >
-            View all services <ArrowRight size={14} />
+            View all services
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
@@ -294,50 +314,83 @@ export default function HomePage() {
 
 function ServiceCard({
   service,
+  index,
   className = "",
   emphasis = false,
   vertical = false,
 }: {
   service: (typeof services)[number];
+  index: number;
   className?: string;
   emphasis?: boolean;
   vertical?: boolean;
 }) {
-  const Icon = iconMap[service.icon as keyof typeof iconMap] ?? Compass;
+  const num = String(index).padStart(2, "0");
   return (
     <Link
       href={`/services#${service.slug}`}
       className={`group relative rounded-3xl overflow-hidden border ${className}`}
-      style={{ borderColor: "var(--color-border)", background: "var(--color-surface)" }}
+      style={{ borderColor: "rgba(255,255,255,0.08)", background: "#0a0a0a" }}
     >
       <img
         src={service.image}
         alt={service.title}
-        className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-90"
       />
+      {/* base black tint */}
+      <div className="absolute inset-0 bg-black/45 transition-colors duration-500 group-hover:bg-black/35" />
+      {/* bottom-up gradient — pure black */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            vertical || emphasis
-              ? "linear-gradient(180deg, rgba(11,28,46,0.1) 0%, rgba(11,28,46,0.85) 100%)"
-              : "linear-gradient(180deg, rgba(11,28,46,0.1) 30%, rgba(11,28,46,0.85) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,0.95) 100%)",
         }}
       />
-      <div className={`relative h-full w-full p-6 md:p-8 flex flex-col ${vertical ? "justify-end" : "justify-end"}`}>
-        <div
-          className="h-11 w-11 rounded-full flex items-center justify-center mb-4 text-white"
-          style={{ background: "var(--color-primary)" }}
+
+      {/* top row: number + tag */}
+      <div className="absolute top-5 left-6 right-6 z-10 flex items-start justify-between">
+        <span
+          className="font-heading font-bold text-white/85 leading-none"
+          style={{ fontSize: emphasis ? "3rem" : "1.6rem" }}
         >
-          <Icon size={18} />
-        </div>
-        <h3 className={`font-heading font-bold text-white leading-tight ${emphasis ? "text-3xl md:text-4xl" : "text-2xl"}`}>
+          {num}
+        </span>
+        <span
+          className="text-[10px] uppercase tracking-[0.25em] font-bold px-3 py-1.5 rounded-full border backdrop-blur-md"
+          style={{
+            color: "var(--color-accent)",
+            borderColor: "rgba(255,255,255,0.25)",
+            background: "rgba(0,0,0,0.4)",
+          }}
+        >
+          {service.tag}
+        </span>
+      </div>
+
+      {/* hover arrow top-right (replaces tag on hover via translate) */}
+      <div
+        className="absolute top-5 right-6 z-20 h-10 w-10 rounded-full flex items-center justify-center transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0"
+        style={{ background: "var(--color-primary)", color: "#fff" }}
+      >
+        <ArrowUpRight size={16} />
+      </div>
+
+      <div className="relative h-full w-full p-6 md:p-8 flex flex-col justify-end">
+        <h3
+          className={`font-heading font-bold text-white leading-[1.1] transition-transform duration-500 group-hover:-translate-y-1 ${emphasis ? "text-3xl md:text-[2.4rem]" : "text-2xl"}`}
+        >
           {service.title}
         </h3>
-        <p className="mt-2 text-sm text-white/85 max-w-md">{service.short}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-white">
-          Learn more <ArrowRight size={14} />
-        </span>
+        <p
+          className={`mt-3 text-sm text-white/85 leading-relaxed max-w-md transition-all duration-500 ${vertical || emphasis ? "max-h-32 opacity-100" : "max-h-0 md:max-h-0 opacity-0 md:opacity-0 md:group-hover:max-h-32 md:group-hover:opacity-100 max-h-32 opacity-100"}`}
+        >
+          {service.short}
+        </p>
+        <div className="mt-5 flex items-center gap-2 text-white">
+          <span className="h-px w-8 transition-all duration-500 group-hover:w-14" style={{ background: "var(--color-accent)" }} />
+          <span className="text-xs uppercase tracking-[0.2em] font-semibold">Explore</span>
+        </div>
       </div>
     </Link>
   );
