@@ -197,18 +197,18 @@ export default function HomePage() {
 
       {/* BOOKING */}
       <section id="booking" className="relative overflow-hidden">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=2400&q=70"
+            src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=2400&q=75"
             alt=""
-            className="w-full h-full object-cover"
-            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-black/60" />
           <div
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at 70% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 70%)",
+              background:
+                "linear-gradient(115deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.55) 100%)",
             }}
           />
         </div>
