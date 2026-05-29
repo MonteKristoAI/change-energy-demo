@@ -196,19 +196,60 @@ export default function HomePage() {
       </section>
 
       {/* BOOKING */}
-      <section id="booking" className="max-w-4xl mx-auto px-4 py-24">
-        <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-            Request a Quote
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">
-            Three steps. One engineer on the other end.
-          </h2>
-          <p className="mt-4 max-w-xl mx-auto" style={{ color: "var(--color-muted)" }}>
-            Tell us what you need, how soon you need it, and where to reach you. We will scope the rest.
-          </p>
+      <section id="booking" className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=2400&q=70"
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/75" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 70% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 70%)",
+            }}
+          />
         </div>
-        <BookingCard />
+
+        <div className="relative max-w-6xl mx-auto px-4 py-16 md:py-20 grid md:grid-cols-5 gap-10 md:gap-14 items-center">
+          <div className="md:col-span-2 text-white">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ background: "var(--color-accent)" }} />
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-accent)" }}>
+                Request a Quote
+              </p>
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold leading-[1.05] mb-5 text-white">
+              Three steps.<br />
+              <span style={{ color: "var(--color-accent)" }}>One engineer</span> on the other end.
+            </h2>
+            <p className="text-base text-white/80 leading-relaxed mb-8 max-w-md">
+              Tell us what you need, how soon you need it, and where to reach you. We will scope the rest.
+            </p>
+
+            <ul className="space-y-3 text-sm">
+              {[
+                "Senior engineer replies within one business day",
+                "Initial scoping call is free of charge",
+                "No sales team — engineers all the way down",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-white/85">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full mt-2 shrink-0"
+                    style={{ background: "var(--color-accent)" }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
+            <BookingCard />
+          </div>
+        </div>
       </section>
 
       {/* ABOUT */}
