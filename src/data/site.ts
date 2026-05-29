@@ -81,32 +81,46 @@ export const services = [
 
 export const team = [
   {
-    name: "David Bryson",
-    title: "Principal Engineer, P.Eng",
-    bio: "Thirty plus years across hydrogen and natural gas infrastructure. Holds the pen on most of our technical assessments.",
-    photo:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=70",
+    name: "Ry Smith",
+    title: "Chief Executive Officer, P.Eng",
+    bio: "Specialist in the design, modeling and analysis of gaseous fuel stations and systems. Over 35 years assessing and developing high-pressure gaseous refuelling station projects.",
+    photo: "/team/ry-smith.jpg",
   },
   {
-    name: "Sarah Whitfield",
-    title: "Director of Engineering",
-    bio: "Leads project delivery for utility-scale and fleet refuelling programs from concept to commissioning.",
-    photo:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=70",
+    name: "Al Davidson",
+    title: "Strategic Advisor, P.Eng",
+    bio: "Design Engineer and Project Manager specializing in alternative energy systems. Over 35 years of expertise in planning, design, safety engineering, and project management of compressed gas vehicle refuelling infrastructure.",
+    photo: "/team/al-davidson.jpg",
   },
   {
-    name: "Marcus Chen",
-    title: "Senior Process Engineer",
-    bio: "Specializes in compression, storage, and dispensing systems for hydrogen and CNG applications.",
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=70",
+    name: "Quinn Davidson",
+    title: "Strategy & Culture",
+    bio: "Focuses on Change Energy's strategic planning. Extensive experience across sports management, academia and business consulting, applied to how engineering informs strategy and how strategic engineering can shape the low carbon economy.",
+    photo: "/team/quinn-davidson.jpg",
   },
   {
-    name: "Elena Rossi",
-    title: "Regulatory Lead",
-    bio: "Twenty years interpreting CSA, NFPA, and TSSA for alternative fuels. Turns code into approved drawings.",
-    photo:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=70",
+    name: "Bob Oliver",
+    title: "Engineer, Transportation Decarbonization",
+    bio: "Works at the intersection of innovative vehicle technology and public policy. A professional engineer with 25 years of organizational leadership and project management, advancing practical solutions for decarbonizing transportation energy use.",
+    photo: "/team/bob-oliver.jpg",
+  },
+  {
+    name: "Dan Brock",
+    title: "Chair",
+    bio: "A leading figure in Canadian government relations. Has held senior advisory positions with federal Ministers of Environment, Justice, and Finance, and served as Principal Secretary to the Leader of the Official Opposition.",
+    photo: "/team/dan-brock.jpg",
+  },
+  {
+    name: "Greg Stephanian",
+    title: "Senior Engineer, P.Eng",
+    bio: "Heads up the alternative energy design team with nearly 30 years of process and mechanical engineering experience. Proven background in Design Engineering, Contract Management, Quality Assurance and Manufacturing.",
+    photo: "/team/greg-stephanian.jpg",
+  },
+  {
+    name: "Dave Meston",
+    title: "Safety Engineer",
+    bio: "Electrical engineer specializing in risk assessment and safety management. Over 40 years in design risk analysis, investigation, audit, training, and development of safety management systems. Teaches safety at Toronto Metropolitan University.",
+    photo: "/team/dave-meston.jpg",
   },
 ];
 

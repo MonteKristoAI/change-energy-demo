@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, PhoneCall, Calendar } from "lucide-react";
+import { ArrowRight, ArrowUpRight, PhoneCall, Calendar, Star } from "lucide-react";
 import { site, services, team, posts, whyUs } from "@/data/site";
 import { PageHero } from "@/components/PageHero";
 import { BookingCard } from "@/components/BookingCard";
@@ -254,146 +254,328 @@ export default function HomePage() {
 
       {/* ABOUT */}
       <section
-        className="border-y"
-        style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+        className="relative border-y overflow-hidden"
+        style={{ background: "var(--color-bg)", borderColor: "var(--color-border)" }}
       >
-        <div className="max-w-6xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-12 items-center">
+        <SectionRails side="left" />
+        <SectionRails side="right" accent />
+
+        <div className="relative max-w-6xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              About Us
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05] mb-5">
-              Two decades of low-carbon infrastructure, packed into one team.
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                About Us
+              </p>
+            </div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.02] mb-6">
+              Strategic engineering for{" "}
+              <span style={{ color: "var(--color-primary)" }}>the low-carbon economy.</span>
             </h2>
-            <p className="leading-relaxed mb-4" style={{ color: "var(--color-muted)" }}>
-              Change Energy Engineering was founded by professional engineers who had spent careers inside the alternative fuels industry watching the same mistakes repeat.
+            <p className="leading-relaxed mb-4 text-[15px]" style={{ color: "var(--color-muted)" }}>
+              Change Energy is a strategic engineering firm focused on the Low Carbon Economy. Strategic engineering is the design and assessment of systems specific to supporting new business initiatives — the success of which will scale up clean energy and low-carbon operations.
             </p>
-            <p className="leading-relaxed mb-6" style={{ color: "var(--color-muted)" }}>
-              We started the firm to do the work the way it should be done: small senior team, real depth in hydrogen and natural gas, the same people from concept through commissioning.
+            <p className="leading-relaxed mb-6 text-[15px]" style={{ color: "var(--color-muted)" }}>
+              Our strategy is to support clients and partners who develop the supply chain infrastructure, end-use, and logistics solutions crucial to progressive decarbonization. Our corporate structure facilitates investment in the projects we serve, keeping a sharp focus on commercial viability.
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition hover:gap-3"
               style={{ background: "var(--color-primary)" }}
             >
-              About us <ArrowRight size={14} />
+              About Change Energy
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80"
-              alt="Engineering team at hydrogen refuelling site"
-              className="absolute inset-0 w-full h-full object-cover"
+          <div className="relative">
+            {/* decorative offset frame */}
+            <div
+              className="absolute -top-4 -left-4 right-4 bottom-4 rounded-3xl border-2 hidden md:block"
+              style={{ borderColor: "var(--color-primary)", opacity: 0.25 }}
             />
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="/about-image.jpg"
+                alt="Change Energy engineers reviewing technical drawings at an industrial facility"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* badge overlay bottom-left */}
+              <div
+                className="absolute bottom-5 left-5 right-5 rounded-2xl backdrop-blur-md p-4 border"
+                style={{
+                  background: "rgba(11, 28, 46, 0.7)",
+                  borderColor: "rgba(255,255,255,0.12)",
+                }}
+              >
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold" style={{ color: "var(--color-accent)" }}>
+                  Established
+                </p>
+                <p className="text-white text-2xl font-heading font-bold mt-1">30+ years in low-carbon engineering</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* TEAM */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
-        <div className="text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-            Meet Our Team
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">The engineers behind the work.</h2>
-        </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-          {team.map((m) => (
-            <div key={m.name} className="group">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-4 relative">
-                <img src={m.photo} alt={m.name} className="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-105" />
-              </div>
-              <p className="font-heading font-semibold text-lg">{m.name}</p>
-              <p className="text-xs mb-2" style={{ color: "var(--color-primary)" }}>{m.title}</p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>{m.bio}</p>
+      <section className="relative py-24 overflow-hidden">
+        <SectionRails side="left" />
+        <SectionRails side="right" accent />
+
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                Meet Our Team
+              </p>
+              <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
             </div>
-          ))}
+            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.02]">
+              The engineers <span style={{ color: "var(--color-primary)" }}>behind the work.</span>
+            </h2>
+            <p className="mt-5 text-base" style={{ color: "var(--color-muted)" }}>
+              A senior practice of P.Eng credentialed engineers, government relations leadership, and strategic advisors.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {team.map((m) => (
+              <article
+                key={m.name}
+                className="group relative rounded-2xl border overflow-hidden transition hover:-translate-y-1 hover:shadow-xl"
+                style={{
+                  background: "var(--color-surface)",
+                  borderColor: "var(--color-border)",
+                }}
+              >
+                <div className="relative aspect-square overflow-hidden">
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-24"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)",
+                    }}
+                  />
+                  <span
+                    className="absolute top-3 right-3 text-[10px] uppercase tracking-[0.2em] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm text-white"
+                    style={{ background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.2)" }}
+                  >
+                    {m.title.includes("P.Eng") ? "P.Eng" : m.title.includes("Chair") ? "Chair" : "Team"}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <p className="font-heading font-bold text-lg leading-tight">{m.name}</p>
+                  <p
+                    className="text-[11px] uppercase tracking-[0.15em] mt-1 mb-3 font-semibold"
+                    style={{ color: "var(--color-primary)" }}
+                  >
+                    {m.title}
+                  </p>
+                  <p
+                    className="text-[13px] leading-relaxed"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {m.bio}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* REVIEWS */}
-      <section
-        className="border-y"
-        style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
-      >
-        <div className="max-w-6xl mx-auto px-4 py-24">
-          <div className="text-center mb-12">
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              Reviews
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">What clients say after a project closes.</h2>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/reviews-bg.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(4,17,34,0.7) 0%, rgba(4,17,34,0.2) 30%, rgba(4,17,34,0.2) 70%, rgba(4,17,34,0.85) 100%)",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-4 py-24">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 text-white">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-px w-10" style={{ background: "var(--color-accent)" }} />
+                <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-accent)" }}>
+                  Google Reviews
+                </p>
+              </div>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">
+                What clients say after the project{" "}
+                <span style={{ color: "var(--color-accent)" }}>closes.</span>
+              </h2>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="flex items-center justify-end gap-1 text-[#fbbc04]">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={16} fill="currentColor" stroke="none" />
+                  ))}
+                  <span className="ml-2 text-white font-bold text-sm">5.0</span>
+                </div>
+                <p className="text-xs uppercase tracking-wider mt-1 text-white/70">
+                  Verified on Google
+                </p>
+              </div>
+            </div>
           </div>
+
           <ReviewsCarousel />
+
           <div className="mt-10 flex justify-center">
             <a
               href={site.reviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:gap-3 hover:scale-[1.02]"
               style={{ background: "var(--color-primary)" }}
             >
-              Leave a review <ArrowRight size={14} />
+              Leave a Google review
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </div>
       </section>
 
       {/* BLOG */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              From the field
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold max-w-xl leading-[1.05]">Field notes from the energy transition.</h2>
-          </div>
-        </div>
-        <div
-          className="rounded-3xl border overflow-hidden grid md:grid-cols-2 shadow-xl"
-          style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
-        >
-          <div className="relative h-72 md:h-auto">
-            <img src={featuredPost.image} alt={featuredPost.title} className="absolute inset-0 w-full h-full object-cover" />
-          </div>
-          <div className="p-8 md:p-12 flex flex-col">
-            <div className="flex items-center gap-3 text-xs mb-4" style={{ color: "var(--color-muted)" }}>
-              <Calendar size={12} /> {featuredPost.date}
-              <span>•</span>
-              <span>{featuredPost.author}</span>
+      <section className="relative py-24 overflow-hidden">
+        <SectionRails side="left" accent />
+        <SectionRails side="right" />
+
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
+                <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                  From the Field
+                </p>
+              </div>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">
+                Field notes from the{" "}
+                <span style={{ color: "var(--color-primary)" }}>energy transition.</span>
+              </h2>
             </div>
-            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-4 leading-tight">{featuredPost.title}</h3>
-            <p className="leading-relaxed mb-6" style={{ color: "var(--color-muted)" }}>{featuredPost.excerpt}</p>
+            <p className="max-w-sm text-base leading-relaxed" style={{ color: "var(--color-muted)" }}>
+              Practical pieces from the engineers doing the work. No marketing fluff.
+            </p>
+          </div>
+
+          {/* Featured card on dark background (contrasts vs body bg) */}
+          <article
+            className="relative rounded-3xl overflow-hidden grid md:grid-cols-2 shadow-2xl border"
+            style={{
+              background: "linear-gradient(135deg, #041122 0%, #0b1c2e 60%, #122739 100%)",
+              borderColor: "rgba(255,255,255,0.08)",
+            }}
+          >
+            <div className="relative h-72 md:h-auto md:min-h-[420px]">
+              <img
+                src={featuredPost.image}
+                alt={featuredPost.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-0 md:bg-gradient-to-r"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.0) 70%, rgba(4,17,34,0.95) 100%)",
+                }}
+              />
+              <span
+                className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.3em] font-bold px-3 py-1.5 rounded-full border backdrop-blur-md text-white"
+                style={{ borderColor: "rgba(255,255,255,0.25)", background: "rgba(0,0,0,0.4)" }}
+              >
+                Featured
+              </span>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col">
+              <div className="flex items-center gap-3 text-xs mb-5 text-white/60">
+                <Calendar size={12} /> {featuredPost.date}
+                <span>•</span>
+                <span>{featuredPost.author}</span>
+              </div>
+              <h3 className="font-heading text-2xl md:text-3xl font-bold mb-5 leading-tight text-white">
+                {featuredPost.title}
+              </h3>
+              <p className="leading-relaxed mb-7 text-white/75 text-[15px]">{featuredPost.excerpt}</p>
+              <Link
+                href="/blog"
+                className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white self-start mt-auto transition hover:gap-3"
+                style={{ background: "var(--color-primary)" }}
+              >
+                Read the full story
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </article>
+
+          <div className="mt-10 flex justify-center">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white self-start mt-auto"
-              style={{ background: "var(--color-primary)" }}
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border transition-all hover:gap-3"
+              style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }}
             >
-              Read all story <ArrowRight size={14} />
+              Read all blogs
+              <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border"
-            style={{ borderColor: "var(--color-border)", color: "var(--color-text)" }}
-          >
-            Read all blogs <ArrowRight size={14} />
-          </Link>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section
-        className="border-t"
-        style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
-      >
-        <div className="max-w-3xl mx-auto px-4 py-24">
-          <div className="text-center mb-10">
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              Contact
+      <section className="relative border-t overflow-hidden" style={{ borderColor: "var(--color-border)" }}>
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/contact-bg.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(4,17,34,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(4,17,34,0.7) 100%)",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-3xl mx-auto px-4 py-20 md:py-24">
+          <div className="text-center mb-10 text-white">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="h-px w-10" style={{ background: "var(--color-accent)" }} />
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-accent)" }}>
+                Contact
+              </p>
+              <span className="h-px w-10" style={{ background: "var(--color-accent)" }} />
+            </div>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.02] text-white">
+              Start the{" "}
+              <span style={{ color: "var(--color-accent)" }}>conversation.</span>
+            </h2>
+            <p className="mt-4 text-white/75 max-w-md mx-auto">
+              Tell us what you are scoping. A senior engineer will reply within one business day.
             </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">Start the conversation.</h2>
           </div>
           <ContactForm />
         </div>
