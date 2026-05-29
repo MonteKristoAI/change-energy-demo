@@ -22,7 +22,7 @@ export default function HomePage() {
             <span style={{ color: "var(--color-accent)" }}>energy transition.</span>
           </>
         }
-        subtitle="Change Energy designs, delivers, and commissions hydrogen, CNG, and LNG infrastructure for operators that need it to actually work. 150+ deployments worldwide."
+        subtitle="A strategic engineering consulting firm focused on the Low Carbon Economy. For more than 30 years, we have helped clients plan and execute major fuel system transitions."
       >
         <Link
           href="#booking"
@@ -71,10 +71,10 @@ export default function HomePage() {
           style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
         >
           {[
-            { v: "150+", l: "Deployments worldwide" },
-            { v: "25+", l: "Years average experience" },
+            { v: "30+", l: "Years in low-carbon engineering" },
             { v: "100%", l: "P.Eng signed deliverables" },
             { v: "6", l: "Practice areas" },
+            { v: "1:1", l: "Senior engineer to project ratio" },
           ].map((s, i) => (
             <div
               key={s.l}

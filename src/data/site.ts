@@ -18,64 +18,64 @@ export const site = {
 
 export const services = [
   {
-    slug: "strategic-engineering",
-    title: "Strategic Engineering Design",
-    short: "Feasibility, technology selection, and capital-grade design packages for low-carbon initiatives.",
+    slug: "comprehensive-project-support",
+    title: "Comprehensive Project Support",
+    short: "From initial conception through final commissioning, the same engineers carry the project end to end.",
     long:
-      "We translate net-zero ambition into engineered systems. Our team produces feasibility studies, technology selection, and capital-grade design packages that survive scrutiny from operators, regulators, and lenders.",
+      "We provide comprehensive project support from initial conception to final commissioning. The same senior engineers stay on the file from scoping through start-up, which is why the work doesn't lose context when it matters most.",
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=70",
-    tag: "Design",
-  },
-  {
-    slug: "hydrogen-infrastructure",
-    title: "Hydrogen Infrastructure",
-    short: "Production, compression, storage, and dispensing across mobility and industrial applications.",
-    long:
-      "Production, compression, storage, dispensing. We design and de-risk hydrogen infrastructure across mobility, industrial, and utility applications, with a 25+ year base of fuelling station deployments behind every decision.",
-    image:
-      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
-    tag: "Hydrogen",
-  },
-  {
-    slug: "natural-gas-refuelling",
-    title: "Natural Gas Refuelling",
-    short: "CNG and LNG station design that meets uptime targets and TCO models for fleet operators.",
-    long:
-      "Fleet operators rely on us to scope, specify, and commission CNG and LNG infrastructure that meets uptime targets and TCO models. We design for the load profile you actually operate, not the brochure version.",
-    image:
-      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
-    tag: "Natural Gas",
-  },
-  {
-    slug: "project-management",
-    title: "Project Management",
-    short: "End-to-end delivery from concept through commissioning, run by engineers, not generalists.",
-    long:
-      "We hold the program together. Scope, schedule, budget, and stakeholders, governed by engineers who have actually delivered alternative fuel infrastructure at scale, not project managers learning on your project.",
-    image:
-      "https://images.unsplash.com/photo-1581091012184-7e0cdfbb6797?auto=format&fit=crop&w=1400&q=70",
     tag: "Delivery",
   },
   {
-    slug: "regulatory-compliance",
-    title: "Regulatory Interpretation",
-    short: "CSA, NFPA, TSSA, ASME. Engineered rationale that gets sign-off without re-litigating the standards.",
+    slug: "fuel-system-supply-chain",
+    title: "Fuel System Supply Chain Design",
+    short: "Design and project management for the fuel system supply chains your operations depend on.",
     long:
-      "CSA, NFPA, TSSA, ASME. We read the standards so your project does not stall at AHJ review. Where the codes are ambiguous, we provide the engineered rationale that gets sign-off.",
+      "We design and project manage the required fuel system supply chains. Production, compression, storage, dispensing, refuelling — engineered against the operational load profile, not a brochure version of it.",
+    image:
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
+    tag: "Supply Chain",
+  },
+  {
+    slug: "codes-standards-approvals",
+    title: "Codes, Standards & Approvals",
+    short: "We interpret CSA, NFPA, TSSA and facilitate AHJ approvals so projects don't stall at review.",
+    long:
+      "We interpret and apply regulations, codes, and standards for safe use of fuel and equipment, and facilitate approval of installations by authorities having jurisdiction. Where the codes are ambiguous, we provide the engineered rationale that gets sign-off.",
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=70",
     tag: "Compliance",
   },
   {
-    slug: "training-troubleshooting",
-    title: "Training & Troubleshooting",
-    short: "Personnel training, SOP development, and on-site performance assessment when systems misbehave.",
+    slug: "performance-troubleshooting",
+    title: "Performance Assessment & Troubleshooting",
+    short: "We troubleshoot problems, assess performance, and engineer solutions in the field when systems misbehave.",
     long:
-      "Built infrastructure is only useful if the operators can run it. We deliver hands-on training, develop SOPs, and turn up on-site when something is not performing the way the design said it would.",
+      "We troubleshoot problems, assess performance and engineer solutions in the field. When something on-site isn't behaving the way the design said it would, we show up and figure out why.",
+    image:
+      "https://images.unsplash.com/photo-1581091012184-7e0cdfbb6797?auto=format&fit=crop&w=1400&q=70",
+    tag: "Operations",
+  },
+  {
+    slug: "hydrogen-refuelling",
+    title: "Hydrogen Production & Refuelling",
+    short: "Detailed engineering for hydrogen production, refuelling, and infrastructure development.",
+    long:
+      "Subject matter expertise across hydrogen production system design, detailed refuelling engineering, and market analyses of applications and infrastructure development. The depth shows up in what we flag, what we de-risk, and what we refuse to engineer because we have seen it fail before.",
+    image:
+      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=70",
+    tag: "Hydrogen",
+  },
+  {
+    slug: "personnel-training",
+    title: "Personnel Training",
+    short: "Hands-on training and SOP development so operators can actually run what we deliver.",
+    long:
+      "We train personnel. Built infrastructure is only useful if the operators can run it. We deliver hands-on training and develop SOPs that hold up against real-world operating conditions, not just classroom scenarios.",
     image:
       "https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=1400&q=70",
-    tag: "Operations",
+    tag: "Training",
   },
 ];
 
@@ -184,16 +184,16 @@ export const posts = [
 
 export const whyUs = [
   {
-    title: "150+ alternative fuel deployments",
-    body: "An international installed base of refuelling and infrastructure systems. We have seen the failure modes before they happen on your project.",
+    title: "30+ years of fuel system transitions",
+    body: "Three decades helping clients plan and execute major fuel system transitions across mobility, industrial, and utility applications.",
   },
   {
     title: "Professional engineers, P.Eng credentialed",
     body: "Every deliverable is signed by professional engineers with specialized hydrogen and natural gas certifications.",
   },
   {
-    title: "Whole-lifecycle support",
-    body: "Concept, feasibility, design, commissioning, operations, troubleshooting. The same firm carries the project end to end.",
+    title: "Concept through commissioning",
+    body: "We provide comprehensive project support from initial conception to final commissioning. The same engineers carry the work end to end.",
   },
   {
     title: "Decades of regulator relationships",
