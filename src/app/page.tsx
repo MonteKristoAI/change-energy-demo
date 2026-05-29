@@ -319,8 +319,8 @@ export default function HomePage() {
 
       {/* TEAM */}
       <section className="relative py-24 overflow-hidden">
-        <SectionRails side="left" />
-        <SectionRails side="right" accent />
+        <HorizontalRails position="top" />
+        <HorizontalRails position="bottom" accent />
 
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="text-center mb-14 max-w-2xl mx-auto">
@@ -760,6 +760,104 @@ function SectionRails({
         .rail-dot { animation: railFloat 6s ease-in-out infinite; transform-origin: center; }
         .rail-dot-2 { animation-delay: 1.5s; }
         .rail-dot-3 { animation-delay: 3s; }
+      `}</style>
+    </div>
+  );
+}
+
+function HorizontalRails({
+  position,
+  accent = false,
+}: {
+  position: "top" | "bottom";
+  accent?: boolean;
+}) {
+  const color = accent ? "var(--color-accent)" : "var(--color-primary)";
+  const gradId = `hrail-glow-${position}`;
+  const isTop = position === "top";
+
+  return (
+    <div
+      className={`absolute inset-x-0 ${isTop ? "top-0" : "bottom-0"} h-[clamp(120px,16vw,220px)] pointer-events-none z-0 overflow-hidden`}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 1400 220"
+        preserveAspectRatio="none"
+        className="absolute inset-0 w-full h-full"
+        style={{
+          color,
+          transform: isTop ? "none" : "scaleY(-1)",
+        }}
+      >
+        <defs>
+          <radialGradient id={gradId} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.18" />
+            <stop offset="60%" stopColor="currentColor" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* soft glow blobs along the rail */}
+        <ellipse cx="280" cy="80" rx="240" ry="100" fill={`url(#${gradId})`} />
+        <ellipse cx="900" cy="50" rx="220" ry="90" fill={`url(#${gradId})`} />
+        <ellipse cx="1200" cy="100" rx="200" ry="90" fill={`url(#${gradId})`} />
+
+        {/* horizontal flowing bezier curves */}
+        <path
+          d="M -40 110 C 220 30, 460 180, 720 90 S 1180 50, 1450 130"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeOpacity="0.4"
+          className="hrail-curve hrail-curve-1"
+        />
+        <path
+          d="M -40 70 C 180 160, 480 40, 700 130 S 1100 200, 1450 80"
+          stroke="currentColor"
+          strokeWidth="1"
+          fill="none"
+          strokeOpacity="0.28"
+          className="hrail-curve hrail-curve-2"
+        />
+        <path
+          d="M -40 160 C 260 90, 520 200, 800 130 S 1200 60, 1450 170"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="none"
+          strokeOpacity="0.22"
+          className="hrail-curve hrail-curve-3"
+        />
+        <path
+          d="M -40 40 C 300 130, 600 20, 880 110 S 1280 180, 1450 30"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          fill="none"
+          strokeOpacity="0.25"
+          strokeDasharray="3 7"
+          className="hrail-curve hrail-curve-4"
+        />
+
+        {/* floating accent dots along the curves */}
+        <circle cx="180" cy="90" r="3" fill="currentColor" fillOpacity="0.55" className="hrail-dot hrail-dot-1" />
+        <circle cx="520" cy="140" r="2" fill="currentColor" fillOpacity="0.5" className="hrail-dot hrail-dot-2" />
+        <circle cx="820" cy="80" r="3.5" fill="currentColor" fillOpacity="0.55" className="hrail-dot hrail-dot-3" />
+        <circle cx="1140" cy="140" r="2" fill="currentColor" fillOpacity="0.65" className="hrail-dot hrail-dot-1" />
+        <circle cx="1320" cy="60" r="1.5" fill="currentColor" fillOpacity="0.5" className="hrail-dot hrail-dot-2" />
+      </svg>
+
+      <style>{`
+        @keyframes hrailDrift1 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-14px); } }
+        @keyframes hrailDrift2 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(12px); } }
+        @keyframes hrailDrift3 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-10px); } }
+        @keyframes hrailFloat { 0%, 100% { transform: translate(0, 0); opacity: 0.55; } 50% { transform: translate(-6px, 2px); opacity: 0.85; } }
+        .hrail-curve-1 { animation: hrailDrift1 16s ease-in-out infinite; transform-origin: center; }
+        .hrail-curve-2 { animation: hrailDrift2 20s ease-in-out infinite; transform-origin: center; }
+        .hrail-curve-3 { animation: hrailDrift3 24s ease-in-out infinite; transform-origin: center; }
+        .hrail-curve-4 { animation: hrailDrift1 28s ease-in-out infinite reverse; transform-origin: center; }
+        .hrail-dot { animation: hrailFloat 6s ease-in-out infinite; transform-origin: center; }
+        .hrail-dot-2 { animation-delay: 1.5s; }
+        .hrail-dot-3 { animation-delay: 3s; }
       `}</style>
     </div>
   );
