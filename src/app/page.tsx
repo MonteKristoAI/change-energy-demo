@@ -41,8 +41,8 @@ export default function HomePage() {
 
       {/* SERVICES */}
       <section className="relative py-24 overflow-hidden">
-        <SectionRails side="left" label="02 / Capabilities" />
-        <SectionRails side="right" label="Engineered to last" accent />
+        <SectionRails side="left" />
+        <SectionRails side="right" accent />
 
         <div className="relative max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
@@ -403,92 +403,97 @@ function ServiceCard({
 
 function SectionRails({
   side,
-  label,
   accent = false,
 }: {
   side: "left" | "right";
-  label: string;
+  label?: string;
   accent?: boolean;
 }) {
   const isLeft = side === "left";
-  const lineSide = isLeft ? { right: "2.5rem" } : { left: "2.5rem" };
-  const tickSide = isLeft ? { right: "2.5rem" } : { left: "2.5rem" };
-  const cornerSide = isLeft ? { right: "2rem" } : { left: "2rem" };
-  const labelSide = isLeft ? { right: "0.5rem" } : { left: "0.5rem" };
+  const color = accent ? "var(--color-accent)" : "var(--color-primary)";
+  const gradId = `rail-glow-${side}`;
 
   return (
     <div
-      className={`hidden xl:block absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-[clamp(80px,10vw,180px)] pointer-events-none z-0`}
+      className={`hidden lg:block absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-[clamp(140px,16vw,300px)] pointer-events-none z-0 overflow-hidden`}
       aria-hidden
     >
-      <div className="relative h-full">
-        {/* main vertical line */}
-        <div
-          className="absolute top-[8%] bottom-[8%] w-px"
-          style={{
-            ...lineSide,
-            background:
-              "linear-gradient(180deg, transparent 0%, var(--color-border) 12%, var(--color-border) 88%, transparent 100%)",
-            opacity: 0.6,
-          }}
+      <svg
+        viewBox="0 0 220 1000"
+        preserveAspectRatio="none"
+        className="absolute inset-0 w-full h-full"
+        style={{
+          color,
+          transform: isLeft ? "none" : "scaleX(-1)",
+        }}
+      >
+        <defs>
+          <radialGradient id={gradId} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.18" />
+            <stop offset="60%" stopColor="currentColor" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* soft glow blobs */}
+        <ellipse cx="80" cy="240" rx="180" ry="160" fill={`url(#${gradId})`} />
+        <ellipse cx="40" cy="720" rx="200" ry="180" fill={`url(#${gradId})`} />
+
+        {/* flowing bezier curves */}
+        <path
+          d="M -20 -40 C 140 120, 30 280, 110 420 S 20 700, 130 880 S 60 1080, 200 1060"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeOpacity="0.35"
+          className="rail-curve rail-curve-1"
+        />
+        <path
+          d="M 60 -20 C -20 200, 160 320, 40 500 S 180 760, 30 1040"
+          stroke="currentColor"
+          strokeWidth="1"
+          fill="none"
+          strokeOpacity="0.25"
+          className="rail-curve rail-curve-2"
+        />
+        <path
+          d="M 120 0 C 40 180, 180 360, 80 580 S -20 880, 160 1040"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          fill="none"
+          strokeOpacity="0.18"
+          className="rail-curve rail-curve-3"
+        />
+        <path
+          d="M -30 80 C 200 200, 20 460, 150 640 S 0 920, 180 1100"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          fill="none"
+          strokeOpacity="0.22"
+          strokeDasharray="2 6"
+          className="rail-curve rail-curve-4"
         />
 
-        {/* tick marks at intervals */}
-        {[18, 30, 42, 58, 70, 82].map((top) => (
-          <div
-            key={top}
-            className="absolute w-4 h-px"
-            style={{ ...tickSide, top: `${top}%`, background: "var(--color-border)", opacity: 0.5 }}
-          />
-        ))}
+        {/* accent floating dots */}
+        <circle cx="55" cy="180" r="3" fill="currentColor" fillOpacity="0.55" className="rail-dot rail-dot-1" />
+        <circle cx="95" cy="460" r="2" fill="currentColor" fillOpacity="0.4" className="rail-dot rail-dot-2" />
+        <circle cx="40" cy="780" r="3.5" fill="currentColor" fillOpacity="0.5" className="rail-dot rail-dot-3" />
+        <circle cx="130" cy="900" r="1.5" fill="currentColor" fillOpacity="0.6" className="rail-dot rail-dot-1" />
+      </svg>
 
-        {/* corner brackets */}
-        <div
-          className="absolute h-5 w-5"
-          style={{
-            ...cornerSide,
-            top: "6%",
-            borderTop: "1px solid var(--color-border)",
-            ...(isLeft ? { borderLeft: "1px solid var(--color-border)" } : { borderRight: "1px solid var(--color-border)" }),
-            opacity: 0.5,
-          }}
-        />
-        <div
-          className="absolute h-5 w-5"
-          style={{
-            ...cornerSide,
-            bottom: "6%",
-            borderBottom: "1px solid var(--color-border)",
-            ...(isLeft ? { borderLeft: "1px solid var(--color-border)" } : { borderRight: "1px solid var(--color-border)" }),
-            opacity: 0.5,
-          }}
-        />
-
-        {/* accent dot at center */}
-        <div
-          className="absolute h-2 w-2 rounded-full"
-          style={{
-            ...tickSide,
-            top: "50%",
-            transform: isLeft ? "translate(50%, -50%)" : "translate(-50%, -50%)",
-            background: accent ? "var(--color-accent)" : "var(--color-primary)",
-            boxShadow: `0 0 0 4px color-mix(in oklab, ${accent ? "var(--color-accent)" : "var(--color-primary)"} 18%, transparent)`,
-          }}
-        />
-
-        {/* rotated label */}
-        <div
-          className="absolute top-1/2 text-[10px] uppercase tracking-[0.5em] font-bold whitespace-nowrap"
-          style={{
-            ...labelSide,
-            transform: `translateY(-50%) rotate(${isLeft ? "180deg" : "0deg"})`,
-            writingMode: "vertical-rl",
-            color: accent ? "var(--color-accent)" : "var(--color-muted)",
-          }}
-        >
-          {label}
-        </div>
-      </div>
+      <style>{`
+        @keyframes railDrift1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes railDrift2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        @keyframes railDrift3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes railFloat { 0%, 100% { transform: translate(0, 0); opacity: 0.55; } 50% { transform: translate(2px, -6px); opacity: 0.85; } }
+        .rail-curve-1 { animation: railDrift1 14s ease-in-out infinite; transform-origin: center; }
+        .rail-curve-2 { animation: railDrift2 18s ease-in-out infinite; transform-origin: center; }
+        .rail-curve-3 { animation: railDrift3 22s ease-in-out infinite; transform-origin: center; }
+        .rail-curve-4 { animation: railDrift1 26s ease-in-out infinite reverse; transform-origin: center; }
+        .rail-dot { animation: railFloat 6s ease-in-out infinite; transform-origin: center; }
+        .rail-dot-2 { animation-delay: 1.5s; }
+        .rail-dot-3 { animation-delay: 3s; }
+      `}</style>
     </div>
   );
 }
