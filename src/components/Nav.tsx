@@ -28,24 +28,20 @@ export function Nav() {
     <div className="fixed top-5 inset-x-0 z-40 px-4">
       <div className="max-w-6xl mx-auto">
         <nav
-          className="rounded-full border backdrop-blur-xl pl-5 pr-3 py-3 flex items-center justify-between transition-all duration-300 shadow-2xl"
+          className="rounded-full border backdrop-blur-xl pl-5 pr-3 py-2.5 flex items-center justify-between transition-all duration-300 shadow-2xl"
           style={{
             background: scrolled
-              ? "color-mix(in oklab, var(--color-surface) 92%, transparent)"
-              : "color-mix(in oklab, #0b1c2e 55%, transparent)",
-            borderColor: scrolled ? "var(--color-border)" : "rgba(255,255,255,0.12)",
+              ? "rgba(11, 28, 46, 0.92)"
+              : "rgba(11, 28, 46, 0.55)",
+            borderColor: "rgba(255,255,255,0.12)",
           }}
         >
           <Link href="/" className="flex items-center gap-3 group">
             <img
               src={site.logoUrl}
               alt="Change Energy"
-              className="h-14 md:h-16 w-auto object-contain shrink-0 transition-transform group-hover:scale-[1.04]"
-              style={{
-                filter: scrolled
-                  ? "drop-shadow(0 1px 2px rgba(0,0,0,0.1))"
-                  : "drop-shadow(0 2px 6px rgba(0,0,0,0.5))",
-              }}
+              className="h-10 md:h-12 w-auto object-contain shrink-0 transition-transform group-hover:scale-[1.04]"
+              style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4))" }}
             />
           </Link>
 
@@ -55,13 +51,13 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 className="nav-link relative px-4 py-2.5 text-[15px] font-medium transition-colors"
-                style={{ color: scrolled ? "var(--color-text)" : "rgba(255,255,255,0.85)" }}
+                style={{ color: "rgba(255,255,255,0.85)" }}
               >
                 <span className="relative z-10">{l.label}</span>
                 <span
                   aria-hidden
                   className="nav-underline absolute left-1/2 -translate-x-1/2 bottom-1.5 h-[2px] w-0 rounded-full transition-all duration-300"
-                  style={{ background: "var(--color-primary)" }}
+                  style={{ background: "var(--color-accent)" }}
                 />
               </Link>
             ))}
@@ -76,8 +72,7 @@ export function Nav() {
           </a>
 
           <button
-            className="md:hidden h-11 w-11 rounded-full flex items-center justify-center"
-            style={{ color: scrolled ? "var(--color-text)" : "#fff" }}
+            className="md:hidden h-11 w-11 rounded-full flex items-center justify-center text-white"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -88,15 +83,14 @@ export function Nav() {
         {open && (
           <div
             className="md:hidden mt-2 rounded-3xl border p-4 backdrop-blur-xl shadow-xl"
-            style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+            style={{ background: "rgba(11, 28, 46, 0.95)", borderColor: "rgba(255,255,255,0.12)" }}
           >
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-3 rounded-xl text-base font-medium hover:bg-black/5 transition"
-                style={{ color: "var(--color-text)" }}
+                className="block px-4 py-3 rounded-xl text-base font-medium hover:bg-white/10 transition text-white"
               >
                 {l.label}
               </Link>
@@ -114,7 +108,7 @@ export function Nav() {
 
       <style>{`
         .nav-link:hover .nav-underline { width: calc(100% - 1.5rem); }
-        .nav-link:hover { color: var(--color-primary) !important; }
+        .nav-link:hover { color: var(--color-accent) !important; }
       `}</style>
     </div>
   );
