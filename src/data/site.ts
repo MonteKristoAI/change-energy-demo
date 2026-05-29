@@ -184,19 +184,18 @@ export const posts = [
 
 export const whyUs = [
   {
-    title: "30+ years of fuel system transitions",
-    body: "Three decades helping clients plan and execute major fuel system transitions across mobility, industrial, and utility applications.",
+    eyebrow: "01 — Engineering depth",
+    title: "Senior engineers carry your file end to end.",
+    body: "P.Eng credentialed engineers from scoping through commissioning. No juniors learning on your dollar, no handoffs that lose the operating context. The same names on the cover sheet and the punch list.",
   },
   {
-    title: "Professional engineers, P.Eng credentialed",
-    body: "Every deliverable is signed by professional engineers with specialized hydrogen and natural gas certifications.",
+    eyebrow: "02 — Specialist focus",
+    title: "Thirty years inside one practice area.",
+    body: "Three decades on hydrogen, CNG, and LNG infrastructure. No other distractions. The depth shows up in what we flag, what we de-risk, and what we refuse to engineer because we have seen it fail before.",
   },
   {
-    title: "Concept through commissioning",
-    body: "We provide comprehensive project support from initial conception to final commissioning. The same engineers carry the work end to end.",
-  },
-  {
-    title: "Decades of regulator relationships",
-    body: "We work with CSA, TSSA, NFPA, and provincial AHJs constantly. Your project benefits from those existing channels.",
+    eyebrow: "03 — Regulator fluency",
+    title: "Codes that get sign-off, not pushback.",
+    body: "We work with CSA, NFPA, TSSA, and provincial AHJs every week. Where the codes are quiet, we provide the engineered rationale that gets approved without re-litigating the standards.",
   },
 ];

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, PhoneCall, CheckCircle2, Calendar } from "lucide-react";
+import { ArrowRight, ArrowUpRight, PhoneCall, Calendar } from "lucide-react";
 import { site, services, team, posts, whyUs } from "@/data/site";
 import { PageHero } from "@/components/PageHero";
 import { BookingCard } from "@/components/BookingCard";
@@ -120,33 +120,77 @@ export default function HomePage() {
         style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
       >
         <div className="max-w-6xl mx-auto px-4 py-24">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
-              Why Change Energy
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold leading-[1.05]">
-              The firm operators trust when the project has to clear an AHJ.
-            </h2>
+          {/* asymmetric header */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-end mb-16">
+            <div className="md:col-span-7">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="h-px w-10" style={{ background: "var(--color-primary)" }} />
+                <p className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                  Why Change Energy
+                </p>
+              </div>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.02]">
+                Three reasons operators keep us on the file{" "}
+                <span style={{ color: "var(--color-primary)" }}>for the long run.</span>
+              </h2>
+            </div>
+            <div className="md:col-span-5">
+              <p className="text-base leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                We do not bid on every project. We engage where our depth in hydrogen and natural gas changes the outcome — for the operator, the lender, and the AHJ.
+              </p>
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {whyUs.map((w) => (
-              <div
+
+          {/* 3 differentiator cards */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {whyUs.map((w, i) => (
+              <article
                 key={w.title}
-                className="rounded-2xl border p-6 flex gap-4"
+                className="group relative rounded-3xl border p-7 md:p-8 flex flex-col transition hover:-translate-y-1"
                 style={{ background: "var(--color-bg)", borderColor: "var(--color-border)" }}
               >
-                <div
-                  className="h-10 w-10 rounded-full flex items-center justify-center shrink-0 text-white"
-                  style={{ background: "var(--color-primary)" }}
-                >
-                  <CheckCircle2 size={18} />
+                {/* big numeric marker at top */}
+                <div className="flex items-center justify-between mb-6">
+                  <span
+                    className="font-heading font-bold leading-none"
+                    style={{ fontSize: "3.4rem", color: "color-mix(in oklab, var(--color-primary) 22%, transparent)" }}
+                  >
+                    0{i + 1}
+                  </span>
+                  <span
+                    className="h-px w-12 transition-all duration-500 group-hover:w-20"
+                    style={{ background: "var(--color-primary)" }}
+                  />
                 </div>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold mb-1">{w.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>{w.body}</p>
-                </div>
-              </div>
+
+                <p className="text-[10px] uppercase tracking-[0.3em] font-semibold mb-3" style={{ color: "var(--color-primary)" }}>
+                  {w.eyebrow.split(" — ")[1]}
+                </p>
+                <h3 className="font-heading text-xl md:text-[1.4rem] font-bold mb-4 leading-tight" style={{ color: "var(--color-text)" }}>
+                  {w.title}
+                </h3>
+                <p className="text-[15px] leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                  {w.body}
+                </p>
+              </article>
             ))}
+          </div>
+
+          {/* closing pull quote */}
+          <div className="mt-16 max-w-3xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="h-px w-8" style={{ background: "var(--color-primary)" }} />
+              <span className="text-[10px] uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-primary)" }}>
+                Our position
+              </span>
+              <span className="h-px w-8" style={{ background: "var(--color-primary)" }} />
+            </div>
+            <p className="font-heading text-xl md:text-2xl leading-snug italic" style={{ color: "var(--color-text)" }}>
+              &ldquo;We do not have a sales team. The engineers who scope your project are the ones who will engineer it. Everything else is a downstream consequence of that choice.&rdquo;
+            </p>
+            <p className="mt-5 text-xs uppercase tracking-[0.2em] font-semibold" style={{ color: "var(--color-muted)" }}>
+              — Change Energy Engineering
+            </p>
           </div>
         </div>
       </section>
