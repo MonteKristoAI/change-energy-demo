@@ -37,22 +37,16 @@ export function Nav() {
           }}
         >
           <Link href="/" className="flex items-center gap-3 group">
-            <span
-              className="h-11 w-11 rounded-full flex items-center justify-center overflow-hidden shrink-0 transition-transform group-hover:scale-105"
-              style={{ background: "rgba(255,255,255,0.95)" }}
-            >
-              <img
-                src={site.logoUrl}
-                alt="Change Energy logo"
-                className="w-9 h-9 object-contain"
-              />
-            </span>
-            <span
-              className="font-heading font-semibold tracking-tight text-lg hidden sm:block"
-              style={{ color: scrolled ? "var(--color-text)" : "#fff" }}
-            >
-              Change Energy
-            </span>
+            <img
+              src={site.logoUrl}
+              alt="Change Energy"
+              className="h-14 md:h-16 w-auto object-contain shrink-0 transition-transform group-hover:scale-[1.04]"
+              style={{
+                filter: scrolled
+                  ? "drop-shadow(0 1px 2px rgba(0,0,0,0.1))"
+                  : "drop-shadow(0 2px 6px rgba(0,0,0,0.5))",
+              }}
+            />
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
