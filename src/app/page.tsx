@@ -40,7 +40,11 @@ export default function HomePage() {
       </PageHero>
 
       {/* SERVICES */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
+      <section className="relative py-24 overflow-hidden">
+        <SectionRails side="left" label="02 / Capabilities" />
+        <SectionRails side="right" label="Engineered to last" accent />
+
+        <div className="relative max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
@@ -106,6 +110,7 @@ export default function HomePage() {
             View all services
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
+        </div>
         </div>
       </section>
 
@@ -393,5 +398,97 @@ function ServiceCard({
         </div>
       </div>
     </Link>
+  );
+}
+
+function SectionRails({
+  side,
+  label,
+  accent = false,
+}: {
+  side: "left" | "right";
+  label: string;
+  accent?: boolean;
+}) {
+  const isLeft = side === "left";
+  const lineSide = isLeft ? { right: "2.5rem" } : { left: "2.5rem" };
+  const tickSide = isLeft ? { right: "2.5rem" } : { left: "2.5rem" };
+  const cornerSide = isLeft ? { right: "2rem" } : { left: "2rem" };
+  const labelSide = isLeft ? { right: "0.5rem" } : { left: "0.5rem" };
+
+  return (
+    <div
+      className={`hidden xl:block absolute inset-y-0 ${isLeft ? "left-0" : "right-0"} w-[clamp(80px,10vw,180px)] pointer-events-none z-0`}
+      aria-hidden
+    >
+      <div className="relative h-full">
+        {/* main vertical line */}
+        <div
+          className="absolute top-[8%] bottom-[8%] w-px"
+          style={{
+            ...lineSide,
+            background:
+              "linear-gradient(180deg, transparent 0%, var(--color-border) 12%, var(--color-border) 88%, transparent 100%)",
+            opacity: 0.6,
+          }}
+        />
+
+        {/* tick marks at intervals */}
+        {[18, 30, 42, 58, 70, 82].map((top) => (
+          <div
+            key={top}
+            className="absolute w-4 h-px"
+            style={{ ...tickSide, top: `${top}%`, background: "var(--color-border)", opacity: 0.5 }}
+          />
+        ))}
+
+        {/* corner brackets */}
+        <div
+          className="absolute h-5 w-5"
+          style={{
+            ...cornerSide,
+            top: "6%",
+            borderTop: "1px solid var(--color-border)",
+            ...(isLeft ? { borderLeft: "1px solid var(--color-border)" } : { borderRight: "1px solid var(--color-border)" }),
+            opacity: 0.5,
+          }}
+        />
+        <div
+          className="absolute h-5 w-5"
+          style={{
+            ...cornerSide,
+            bottom: "6%",
+            borderBottom: "1px solid var(--color-border)",
+            ...(isLeft ? { borderLeft: "1px solid var(--color-border)" } : { borderRight: "1px solid var(--color-border)" }),
+            opacity: 0.5,
+          }}
+        />
+
+        {/* accent dot at center */}
+        <div
+          className="absolute h-2 w-2 rounded-full"
+          style={{
+            ...tickSide,
+            top: "50%",
+            transform: isLeft ? "translate(50%, -50%)" : "translate(-50%, -50%)",
+            background: accent ? "var(--color-accent)" : "var(--color-primary)",
+            boxShadow: `0 0 0 4px color-mix(in oklab, ${accent ? "var(--color-accent)" : "var(--color-primary)"} 18%, transparent)`,
+          }}
+        />
+
+        {/* rotated label */}
+        <div
+          className="absolute top-1/2 text-[10px] uppercase tracking-[0.5em] font-bold whitespace-nowrap"
+          style={{
+            ...labelSide,
+            transform: `translateY(-50%) rotate(${isLeft ? "180deg" : "0deg"})`,
+            writingMode: "vertical-rl",
+            color: accent ? "var(--color-accent)" : "var(--color-muted)",
+          }}
+        >
+          {label}
+        </div>
+      </div>
+    </div>
   );
 }
