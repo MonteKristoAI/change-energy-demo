@@ -29,7 +29,12 @@ export default function HomePage() {
       <PageHero
         image="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=2400&q=80"
         eyebrow="Low Carbon Infrastructure"
-        title="Engineered systems for the energy transition."
+        title={
+          <>
+            Engineered systems for the{" "}
+            <span style={{ color: "var(--color-accent)" }}>energy transition.</span>
+          </>
+        }
         subtitle="Change Energy designs, delivers, and commissions hydrogen, CNG, and LNG infrastructure for operators that need it to actually work. 150+ deployments worldwide."
       >
         <Link

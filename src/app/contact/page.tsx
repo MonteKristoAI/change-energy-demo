@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageHero
         image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2400&q=80"
         eyebrow="Contact"
-        title="Reach an engineer directly."
+        title={<>Reach an <span style={{ color: "var(--color-accent)" }}>engineer</span> directly.</>}
         subtitle="Phone, email, or the form on this page. We reply within one business day."
         height="short"
       />

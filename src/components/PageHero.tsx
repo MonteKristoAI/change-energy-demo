@@ -10,37 +10,62 @@ export function PageHero({
 }: {
   image: string;
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   children?: ReactNode;
   height?: "tall" | "short";
 }) {
+  const tallClass =
+    height === "tall"
+      ? "min-h-screen min-h-[100svh]"
+      : "min-h-[70vh] min-h-[70svh]";
+
   return (
-    <section
-      className={`relative ${height === "tall" ? "min-h-[88vh]" : "min-h-[58vh]"} flex items-center overflow-hidden`}
-    >
+    <section className={`relative ${tallClass} w-full flex items-center justify-center overflow-hidden`}>
       <div className="absolute inset-0 anim-zoom">
-        <img src={image} alt="" className="w-full h-full object-cover" />
+        <img
+          src={image}
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
-      <div className="absolute inset-0" style={{ background: "var(--color-overlay)" }} />
+
+      {/* solid black overlay — base */}
+      <div className="absolute inset-0 bg-black/65" />
+      {/* radial vignette to push focus to center */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--color-bg) 10%, transparent) 0%, color-mix(in oklab, var(--color-bg) 0%, transparent) 50%, color-mix(in oklab, var(--color-bg) 70%, transparent) 100%)",
+            "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.7) 100%)",
         }}
       />
-      <div className="relative max-w-6xl mx-auto px-4 pt-32 pb-16 w-full">
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-32 w-full text-center">
         {eyebrow && (
-          <p className="uppercase tracking-[0.25em] text-xs font-semibold mb-4 text-white/80">{eyebrow}</p>
+          <p
+            className="uppercase tracking-[0.3em] text-xs font-semibold mb-5 inline-block px-4 py-1.5 rounded-full border border-white/20 backdrop-blur-sm"
+            style={{ color: "var(--color-accent)" }}
+          >
+            {eyebrow}
+          </p>
         )}
-        <h1 className="font-heading text-white text-4xl md:text-6xl font-bold leading-[1.05] max-w-3xl">
+        <h1 className="font-heading text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mx-auto max-w-3xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-5 text-lg text-white/85 max-w-2xl leading-relaxed">{subtitle}</p>
+          <p className="mt-6 text-base md:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            {subtitle}
+          </p>
         )}
-        {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
+        {children && <div className="mt-9 flex flex-wrap items-center justify-center gap-3">{children}</div>}
+      </div>
+
+      {/* scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+        <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
       </div>
     </section>
   );

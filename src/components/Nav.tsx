@@ -25,23 +25,32 @@ export function Nav() {
   }, []);
 
   return (
-    <div className="fixed top-4 inset-x-0 z-40 px-4">
+    <div className="fixed top-5 inset-x-0 z-40 px-4">
       <div className="max-w-6xl mx-auto">
         <nav
-          className="rounded-full border backdrop-blur-xl px-3 py-2 flex items-center justify-between transition-all duration-300 shadow-lg"
+          className="rounded-full border backdrop-blur-xl pl-5 pr-3 py-3 flex items-center justify-between transition-all duration-300 shadow-2xl"
           style={{
-            background: scrolled ? "var(--color-surface)" : "color-mix(in oklab, var(--color-surface) 70%, transparent)",
-            borderColor: "var(--color-border)",
+            background: scrolled
+              ? "color-mix(in oklab, var(--color-surface) 92%, transparent)"
+              : "color-mix(in oklab, #0b1c2e 55%, transparent)",
+            borderColor: scrolled ? "var(--color-border)" : "rgba(255,255,255,0.12)",
           }}
         >
-          <Link href="/" className="flex items-center gap-2 pl-3">
+          <Link href="/" className="flex items-center gap-3 group">
             <span
-              className="h-8 w-8 rounded-full flex items-center justify-center font-bold text-white text-sm"
-              style={{ background: "var(--color-primary)" }}
+              className="h-11 w-11 rounded-full flex items-center justify-center overflow-hidden shrink-0 transition-transform group-hover:scale-105"
+              style={{ background: "rgba(255,255,255,0.95)" }}
             >
-              CE
+              <img
+                src={site.logoUrl}
+                alt="Change Energy logo"
+                className="w-9 h-9 object-contain"
+              />
             </span>
-            <span className="font-heading font-semibold tracking-tight" style={{ color: "var(--color-text)" }}>
+            <span
+              className="font-heading font-semibold tracking-tight text-lg hidden sm:block"
+              style={{ color: scrolled ? "var(--color-text)" : "#fff" }}
+            >
               Change Energy
             </span>
           </Link>
@@ -51,35 +60,40 @@ export function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="px-4 py-2 rounded-full text-sm font-medium transition hover:opacity-100"
-                style={{ color: "var(--color-text)", opacity: 0.75 }}
+                className="nav-link relative px-4 py-2.5 text-[15px] font-medium transition-colors"
+                style={{ color: scrolled ? "var(--color-text)" : "rgba(255,255,255,0.85)" }}
               >
-                {l.label}
+                <span className="relative z-10">{l.label}</span>
+                <span
+                  aria-hidden
+                  className="nav-underline absolute left-1/2 -translate-x-1/2 bottom-1.5 h-[2px] w-0 rounded-full transition-all duration-300"
+                  style={{ background: "var(--color-primary)" }}
+                />
               </Link>
             ))}
           </div>
 
           <a
             href={site.phoneHref}
-            className="hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+            className="hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-[1.03] hover:shadow-lg"
             style={{ background: "var(--color-primary)" }}
           >
-            <PhoneCall size={14} /> Call Us
+            <PhoneCall size={15} /> Call Us
           </a>
 
           <button
-            className="md:hidden h-9 w-9 rounded-full flex items-center justify-center"
-            style={{ color: "var(--color-text)" }}
+            className="md:hidden h-11 w-11 rounded-full flex items-center justify-center"
+            style={{ color: scrolled ? "var(--color-text)" : "#fff" }}
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
 
         {open && (
           <div
-            className="md:hidden mt-2 rounded-2xl border p-4 backdrop-blur-xl"
+            className="md:hidden mt-2 rounded-3xl border p-4 backdrop-blur-xl shadow-xl"
             style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
           >
             {links.map((l) => (
@@ -87,7 +101,7 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block px-3 py-2 rounded-lg text-sm font-medium"
+                className="block px-4 py-3 rounded-xl text-base font-medium hover:bg-black/5 transition"
                 style={{ color: "var(--color-text)" }}
               >
                 {l.label}
@@ -95,14 +109,19 @@ export function Nav() {
             ))}
             <a
               href={site.phoneHref}
-              className="mt-2 flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white"
+              className="mt-3 flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white"
               style={{ background: "var(--color-primary)" }}
             >
-              <PhoneCall size={14} /> {site.phone}
+              <PhoneCall size={15} /> {site.phone}
             </a>
           </div>
         )}
       </div>
+
+      <style>{`
+        .nav-link:hover .nav-underline { width: calc(100% - 1.5rem); }
+        .nav-link:hover { color: var(--color-primary) !important; }
+      `}</style>
     </div>
   );
 }

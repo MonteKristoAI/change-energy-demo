@@ -15,7 +15,7 @@ export default function AboutPage() {
       <PageHero
         image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80"
         eyebrow="About Us"
-        title="Built by engineers who refused to deliver work they could not stand behind."
+        title={<>Built by engineers who refused to deliver work they <span style={{ color: "var(--color-accent)" }}>could not stand behind.</span></>}
         subtitle="Change Energy Engineering was founded to do alternative fuels infrastructure the way it should be done. Senior engineers from concept through commissioning, the same names on the cover sheet and the punch list."
         height="short"
       />

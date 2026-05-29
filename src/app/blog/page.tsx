@@ -13,7 +13,7 @@ export default function BlogPage() {
       <PageHero
         image="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2400&q=80"
         eyebrow="Field Notes"
-        title="What we learn building alternative fuel infrastructure, written down."
+        title={<>What we learn building alternative fuel infrastructure, <span style={{ color: "var(--color-accent)" }}>written down.</span></>}
         subtitle="Short, practical pieces from the people doing the engineering."
         height="short"
       />

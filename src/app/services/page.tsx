@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageHero
         image="https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=2400&q=80"
         eyebrow="What We Do"
-        title="Engineering services for the low-carbon economy."
+        title={<>Engineering services for the <span style={{ color: "var(--color-accent)" }}>low-carbon economy.</span></>}
         subtitle="Six practice areas, one continuous team. Below is what we cover, in the order most clients engage us."
         height="short"
       >
